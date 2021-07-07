@@ -9,6 +9,16 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+function getEmailDomain(eMail){
+    const monkeyTail = eMail.indexOf('@')
+
+    const domain = eMail.substring(monkeyTail + 1)
+    return console.log(domain)
+}
+
+getEmailDomain("n.eeken@novi-education.nl")
+getEmailDomain("t.mellink@novi.nl")
+getEmailDomain("a.wiersma@outlook.com")
 
 
 
@@ -19,6 +29,25 @@
 // typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
+
+function typeOfEmail(eMail){
+    const monkeyTail = eMail.indexOf('@')
+    const functie = eMail.substring(monkeyTail + 1)
+    if (functie.includes('education.nl'))
+        return console.log('Student')
+
+    else if (functie.includes('novi.nl'))
+        return console.log('Medewerker')
+
+    else
+        return console.log('extern')
+
+}
+
+typeOfEmail('"n.eeken@novi-education.nl"')
+typeOfEmail('t.mellink@novi.nl')
+typeOfEmail('novi.nlaapjesk@outlook.com')
+typeOfEmail('a.wiersma@outlook.com')
 
 
 
@@ -34,3 +63,25 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(eMail) {
+    const monkeyTail = eMail.indexOf('@')
+    const emailCheck = eMail.substring(monkeyTail)
+    const puntCheck = eMail.charAt(eMail.length-1)
+    console.log(puntCheck)
+
+
+    if (emailCheck.includes('@') && emailCheck.includes('.nl') || emailCheck.includes('.com'))
+        return console.log(true)
+    else if (puntCheck === '.')
+        return console.log(false)
+    else
+        return console.log(false)
+}
+
+
+checkEmailValidity('n.eeken@novi.nl')
+checkEmailValidity("tessmellink@novi.nl")
+checkEmailValidity('n.eekenanovi.nl')
+checkEmailValidity('n.eeken@novinl.')
+checkEmailValidity('tessmellink@novi,nl')
